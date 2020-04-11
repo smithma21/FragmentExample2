@@ -1,6 +1,7 @@
 package android.example.fragmentexample2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mButton;
     private Boolean isFragmentDisplayed = false;
+    static final String STATE_FRAGMENT = "state_of_fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mButton = findViewById(R.id.open_button);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isFragmentDisplayed) {
+                    displayFragment();
+                } else {
+                    closeFragment();
+                }
+            }
+        });
+
+        if (savedInstanceState != null) {
+            isFragmentDisplayed = savedInstanceState.getBoolean(STATE_FRAGMENT);
+            if (isFragmentDisplayed) {
+                mButton.setText(R.string.close);
+            }
+        }
     }
 
     public void displayFragment() {
@@ -45,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         mButton.setText(R.string.open);
 
         isFragmentDisplayed = false;
+    }
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
+        super.onSaveInstanceState(savedInstanceState);
     }
 }
 
