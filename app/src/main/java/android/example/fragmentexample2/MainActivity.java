@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton;
+    private Button nextButton;
     private Boolean isFragmentDisplayed = false;
     static final String STATE_FRAGMENT = "state_of_fragment";
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mButton = findViewById(R.id.open_button);
-        Button nextButton = findViewById(R.id.next_button);
+        nextButton = findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSecondActivity() {
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, SecondActivity.class));
     }
 }
 

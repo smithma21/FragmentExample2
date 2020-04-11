@@ -12,6 +12,7 @@ import android.widget.Button;
 public class SecondActivity extends AppCompatActivity {
 
     private Button mButton;
+    private Button prevButton;
     private Boolean isFragmentDisplayed = false;
     static final String STATE_FRAGMENT = "state_of_fragment";
 
@@ -19,14 +20,13 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
 
-        Button prevButton = findViewById(R.id.prev_button);
+        prevButton = findViewById(R.id.prev_button);
 
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchMainActivity();
+                finish();
             }
         });
 
@@ -81,10 +81,5 @@ public class SecondActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
         super.onSaveInstanceState(savedInstanceState);
-    }
-
-    public void launchMainActivity() {
-        Intent mainActivityIntent = new Intent(SecondActivity.this, MainActivity.class);
-        startActivity(mainActivityIntent);
     }
 }
