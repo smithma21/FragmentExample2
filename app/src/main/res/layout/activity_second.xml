@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SecondActivity">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -87,5 +87,5 @@
         android:layout_marginTop="8dp"
         android:text="@string/previous"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/open_button1" />
+        app:layout_constraintTop_toBottomOf="@+id/open_button1"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
