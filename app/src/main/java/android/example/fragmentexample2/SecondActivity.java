@@ -1,18 +1,16 @@
 package android.example.fragmentexample2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 public class SecondActivity extends AppCompatActivity {
 
     private Button mButton;
-    private Button prevButton;
     private Boolean isFragmentDisplayed = false;
     static final String STATE_FRAGMENT = "state_of_fragment";
 
@@ -21,7 +19,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        prevButton = findViewById(R.id.prev_button);
+        Button prevButton = findViewById(R.id.prev_button);
 
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
