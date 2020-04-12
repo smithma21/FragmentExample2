@@ -19,65 +19,66 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button prevButton = findViewById(R.id.prev_button);
+        configurePrevButton();
+//        mButton = findViewById(R.id.open_button);
+//
+//        mButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!isFragmentDisplayed) {
+//                    displayFragment();
+//                } else {
+//                    closeFragment();
+//                }
+//            }
+//        });
+//
+//        if (savedInstanceState != null) {
+//            isFragmentDisplayed = savedInstanceState.getBoolean(STATE_FRAGMENT);
+//            if (isFragmentDisplayed) {
+//                mButton.setText(R.string.close);
+//            }
+//        }
+    }
 
+    private void configurePrevButton() {
+        Button prevButton = findViewById(R.id.prev_button);
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-        mButton = findViewById(R.id.open_button);
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isFragmentDisplayed) {
-                    displayFragment();
-                } else {
-                    closeFragment();
-                }
-            }
-        });
-
-        if (savedInstanceState != null) {
-            isFragmentDisplayed = savedInstanceState.getBoolean(STATE_FRAGMENT);
-            if (isFragmentDisplayed) {
-                mButton.setText(R.string.close);
-            }
-        }
     }
-
-    public void displayFragment() {
-        SimpleFragment simpleFragment = SimpleFragment.newInstance();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.add(R.id.fragment_container, simpleFragment).addToBackStack(null).commit();
-
-        mButton.setText(R.string.close);
-
-        isFragmentDisplayed = true;
-    }
-
-    public void closeFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        SimpleFragment simpleFragment = (SimpleFragment) fragmentManager.findFragmentById(R.id.fragment_container);
-
-        if (simpleFragment != null) {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.remove(simpleFragment).commit();
-        }
-
-        mButton.setText(R.string.open);
-
-        isFragmentDisplayed = false;
-    }
-
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
-        super.onSaveInstanceState(savedInstanceState);
-    }
+//    public void displayFragment() {
+//        SimpleFragment simpleFragment = SimpleFragment.newInstance();
+//
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//        fragmentTransaction.add(R.id.fragment_container, simpleFragment).addToBackStack(null).commit();
+//
+//        mButton.setText(R.string.close);
+//
+//        isFragmentDisplayed = true;
+//    }
+//
+//    public void closeFragment() {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        SimpleFragment simpleFragment = (SimpleFragment) fragmentManager.findFragmentById(R.id.fragment_container);
+//
+//        if (simpleFragment != null) {
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.remove(simpleFragment).commit();
+//        }
+//
+//        mButton.setText(R.string.open);
+//
+//        isFragmentDisplayed = false;
+//    }
+//
+//    public void onSaveInstanceState(Bundle savedInstanceState) {
+//        savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
+//        super.onSaveInstanceState(savedInstanceState);
+//    }
 }
